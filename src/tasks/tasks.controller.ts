@@ -1,19 +1,21 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 
 @Controller('tasks')
 export class TasksController {
   @Get('/')
-  listTasks() {
-    return 'tasks';
+  listTasks(@Query() query: any) {
+    console.log(query['test']);
+
+    return `tasks ${query['test']}`;
   }
 
   @Post('/')
-  createTask() {
-    return 'create task';
+  createTask(@Body() body: any) {
+    return body;
   }
 
   @Get('/:id')
-  getTask() {
-    return 'get task';
+  getTask(@Param('id') id: string) {
+    return id;
   }
 }
