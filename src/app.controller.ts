@@ -1,17 +1,12 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get } from '@nestjs/common';
+import { AppService } from './app.service';
 
-@Controller('/app')
+@Controller()
 export class AppController {
-  @Get('/ads')
-  getRootRoute() {
-    return "Hello World!";
-  }
+  constructor(private readonly appService: AppService) {}
 
-
-  @Get('/contact')
-  getContactPage() {
-    return "Contact Page";
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
   }
-  
-  
 }

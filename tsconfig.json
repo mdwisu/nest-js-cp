@@ -1,12 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES6",
     "module": "commonjs",
-    "experimentalDecorators": true, // Enable decorator support
-    "emitDecoratorMetadata": true, // Optionally add this for better metadata reflection (needed for some NestJS features)
-    "strict": true,
-    "esModuleInterop": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false
   }
 }
