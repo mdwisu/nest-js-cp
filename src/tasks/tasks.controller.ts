@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, Post, Query } from '@nestjs/common';
 import { CreateTaskDto } from './dtos/create-task.dto';
 import { TasksService } from './tasks.service';
 
@@ -21,7 +21,11 @@ export class TasksController {
   }
 
   @Get('/:id')
-  getTask(@Param('id') id: string) {
-    return this.taskService.findOne(parseInt(id));
+  async getTask(@Param('id') id: string) {
+    const task = await this.taskService.findOne(parseInt(id));
+
+    if (!task) {
+      throw new NotFoundException('Task not found');
+    }
   }
 }
