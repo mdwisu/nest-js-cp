@@ -3,11 +3,7 @@ import { TaskRepository } from './tasks.repository';
 
 @Injectable()
 export class TasksService {
-  taskRepo: TaskRepository;
-
-  constructor() {
-    this.taskRepo = new TaskRepository();
-  }
+  constructor(private readonly taskRepo: TaskRepository) {}
 
   findAll() {
     return this.taskRepo.findAll();
